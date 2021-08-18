@@ -4,7 +4,7 @@ import select
 
 class EpollExclusiveSelector(selectors.EpollSelector):
     def register(self, fileobj, events, data=None):
-        key = super(selectors._PollLikeSelector).register(fileobj, events, data)
+        key = super(selectors._PollLikeSelector, self).register(fileobj, events, data)
         poller_events = select.EPOLLEXCLUSIVE
         if events & selectors.EVENT_READ:
             poller_events |= self._EVENT_READ
